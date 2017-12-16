@@ -2,64 +2,77 @@ var firstTag = document.getElementById("first");
 var secondTag = document.getElementById("second");
 var answerTag = document.getElementById("answer");
 
-function isInputValid() {
+function isInputValid(firstNum, secondNum) {
     var isValid = false;
 
-    if (firstTag.value != '' && secondTag.value != '') {
+    if (isNaN(firstNum) && isNaN(secondNum)) {
+        firstTag.style.borderColor = "red";
+        secondTag.style.borderColor = "red";
+        isValid = false;
+        return isValid;
+    } else if (!isNaN(firstNum) && !isNaN(secondTag)) {
+        firstTag.style.borderColor = "black";
+        secondTag.style.borderColor = "black";
         isValid = true;
     }
 
-    if (firstTag.value == '' && secondTag.value == '') {
-        isValid = false;
+    if (isNaN(firstNum)) {
         firstTag.style.borderColor = "red";
-        secondTag.style.borderColor = "red";
-    } else if (firstTag.value == '') {
         isValid = false;
-        firstTag.style.borderColor = "red";
-    } else if (secondTag.value == '') {
-        isValid = false;
-        secondTag.style.borderColor = "red";
+    } else if (!isNaN(firstNum)) {
+        firstTag.style.borderColor = "black";
+        isValid = true;
     }
+
+    if (isNaN(secondNum)) {
+        secondTag.style.borderColor = "red";
+        isValid = false;
+    } else {
+        secondTag.style.borderColor = "black";
+        if (isValid) {
+            isValid = true;
+        }
+    }
+
+    console.log(isValid);
+    console.log(firstNum);
+    console.log(secondNum);
 
     return isValid;
 }
 
 function addition() {
-    if (isInputValid()) {
-        var firstNum = firstTag.valueAsNumber;
-        var secondNum = secondTag.valueAsNumber;
+    var firstNum = firstTag.valueAsNumber;
+    var secondNum = secondTag.valueAsNumber;
+
+    if (isInputValid(firstNum, secondNum)) {
         answerTag.innerHTML = firstNum + secondNum;
-        firstTag.style.borderColor = "black";
-        secondTag.style.borderColor = "black";
     }
 }
 
 function subtraction() {
-    if (isInputValid()) {
-        var firstNum = firstTag.valueAsNumber;
-        var secondNum = secondTag.valueAsNumber;
+    var firstNum = firstTag.valueAsNumber;
+    var secondNum = secondTag.valueAsNumber;
+
+    if (isInputValid(firstNum, secondNum)) {
         answerTag.innerHTML = firstNum - secondNum;
-        firstTag.style.borderColor = "black";
-        secondTag.style.borderColor = "black";
     }
 }
 
 function multiplication() {
-    if (isInputValid()) {
-        var firstNum = firstTag.valueAsNumber;
-        var secondNum = secondTag.valueAsNumber;
+    var firstNum = firstTag.valueAsNumber;
+    var secondNum = secondTag.valueAsNumber;
+
+    if (isInputValid(firstNum, secondNum)) {
         answerTag.innerHTML = firstNum * secondNum;
-        firstTag.style.borderColor = "black";
-        secondTag.style.borderColor = "black";
     }
 }
 
 function division() {
-    if (isInputValid()) {
-        var firstNum = firstTag.valueAsNumber;
-        var secondNum = secondTag.valueAsNumber;
+    var firstNum = firstTag.valueAsNumber;
+    var secondNum = secondTag.valueAsNumber;
+
+    if (isInputValid(firstNum, secondNum)) {
         answerTag.innerHTML = firstNum / secondNum;
-        firstTag.style.borderColor = "black";
-        secondTag.style.borderColor = "black";
     }
 }
